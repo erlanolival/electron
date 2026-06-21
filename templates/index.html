@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+<title>
+    {{ book.title }}
+</title>
+
+<link
+    rel="stylesheet"
+    href="/static/css/style.css">
+```
+
+</head>
+
+<body>
+
+```
+<!-- Música do capítulo -->
+<audio
+    id="bgMusic"
+    loop>
+</audio>
+
+<!-- Som de virar página -->
+<audio id="pageFlip">
+
+    <source
+        src="/static/sounds/page_flip.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+<!-- Barra de progresso -->
+<div id="progressContainer">
+
+    <div id="progressBar">
+    </div>
+
+</div>
+
+<!-- ===================== -->
+<!-- CAPA DO LIVRO         -->
+<!-- ===================== -->
+
+<div id="coverScreen">
+
+    <img
+        src="/static/images/{{ book.cover }}"
+        class="book-cover">
+
+    <h1>
+        {{ book.title }}
+    </h1>
+
+    <h2>
+        {{ book.subtitle }}
+    </h2>
+
+    <button onclick="startBook()">
+
+        Start Reading
+
+    </button>
+
+</div>
+
+<!-- ===================== -->
+<!-- INTRODUÇÃO CAPÍTULO   -->
+<!-- ===================== -->
+
+<div
+    id="introScreen"
+    style="display:none;">
+
+    <img
+        id="chapterImage"
+        class="chapter-image">
+
+    <h1 id="chapterTitle">
+    </h1>
+
+    <button onclick="beginChapter()">
+
+        Begin Chapter
+
+    </button>
+
+</div>
+
+<!-- ===================== -->
+<!-- LEITOR DO LIVRO       -->
+<!-- ===================== -->
+
+<div
+    id="readingScreen"
+    style="display:none;">
+
+    <div class="book-container">
+
+        <div
+            id="bookPage"
+            class="page">
+        </div>
+
+    </div>
+
+    <!-- Navegação -->
+
+    <div class="navigation">
+
+        <button
+            onclick="previousPage()">
+
+            ← Previous
+
+        </button>
+
+        <button
+            onclick="nextPage()">
+
+            Next →
+
+        </button>
+
+    </div>
+
+    <!-- Indicador -->
+
+    <div id="pageIndicator">
+
+        Page
+        <span id="currentPage">
+
+            1
+
+        </span>
+
+        /
+        <span id="totalPages">
+
+            1
+
+        </span>
+
+    </div>
+
+</div>
+
+<!-- ===================== -->
+<!-- DADOS DOS CAPÍTULOS   -->
+<!-- ===================== -->
+
+<script
+    id="chapters-data"
+    type="application/json">
+
+    {{ chapters | tojson }}
+
+</script>
+
+<script>
+
+    const chapters = JSON.parse(
+        document.getElementById(
+            "chapters-data"
+        ).textContent
+    );
+
+</script>
+
+<!-- JavaScript principal -->
+
+<script src="/static/js/book.js">
+</script>
+```
+
+</body>
+
+</html>

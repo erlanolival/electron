@@ -1,0 +1,47 @@
+.page {
+
+    transition:
+        transform 0.8s ease,
+        opacity 0.8s ease;
+}
+
+.page.turning {
+
+    transform:
+        rotateY(-90deg);
+
+    opacity: 0;
+}
+
+#coverScreen {
+
+    text-align: center;
+
+    padding-top: 50px;
+}
+
+.book-cover {
+
+    width: 400px;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 0 25px rgba(0,0,0,.4);
+}
+
+.chapter-image {
+
+    width: 700px;
+
+    max-width: 90%;
+}
+
+#bookPage {
+
+    white-space: pre-wrap;
+
+    line-height: 1.8;
+
+    font-size: 1.2rem;
+}
